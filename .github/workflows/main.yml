@@ -1,0 +1,11 @@
+module.exports = function(req, res, next) {
+  if (
+    req.user
+    && req.user.email === "officialmanagementbookings3@gmail.com"
+    && req.user.isAdmin === true
+    && req.user.username === "UNSEENutc"
+  ) {
+    return next();
+  }
+  return res.status(403).json({ error: "Admin wallet access required." });
+};
